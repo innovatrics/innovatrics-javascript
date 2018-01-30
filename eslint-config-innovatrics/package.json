@@ -1,0 +1,19 @@
+{
+  "name": "@innovatrics/eslint-config-innovatrics",
+  "version": "0.0.1",
+  "description": "Innovatrics JS ESLINT config, following our styleguide",
+  "main": "index.js",
+  "author": "Innovatrics, s.r.o.",
+  "license": "MIT",
+  "dependencies": {
+    "eslint-config-airbnb": "^16.1.0"
+  },
+  "peerDependencies": {
+    "eslint": "^4.16.0",
+    "eslint-plugin-flowtype": "^2.42.0",
+    "eslint-plugin-import": "^2.8.0",
+    "eslint-plugin-jsx-a11y": "^6.0.3",
+    "eslint-plugin-react": "^7.4.0"
+  },
+  "repository": "git@github.com:innovatrics/innovatrics-javascript.git"
+}
