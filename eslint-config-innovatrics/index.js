@@ -75,5 +75,10 @@ module.exports = {
         "render"
       ]
     }],
-  }
+  },
+  // import electron from 'electron' errors because it's in devDependencies, this rule fixes it
+  // see: https://github.com/benmosher/eslint-plugin-import/issues/422
+  "settings": {
+    "import/core-modules": ["electron"],
+  },
 };
