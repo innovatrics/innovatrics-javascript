@@ -54,5 +54,10 @@ module.exports = {
     // are numbers, then airbnb wants them unquoted, and flow
     // wants them quoted. and we cannot change it in flow.
     'quote-props': ['error', 'as-needed', { keywords: false, unnecessary: true, numbers: true }]
-  }
+  },
+  // import electron from 'electron' errors because it's in devDependencies, this rule fixes it
+  // see: https://github.com/benmosher/eslint-plugin-import/issues/422
+  "settings": {
+    "import/core-modules": ["electron"],
+  },
 };
