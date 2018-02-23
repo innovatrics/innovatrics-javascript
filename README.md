@@ -1,15 +1,19 @@
 # Innovatrics JavaScript Style Guide
 
+
 We follow Airbnb JavaScript Style Guide (https://github.com/airbnb/javascript) and Airbnb React/JSX Style Guide (https://github.com/airbnb/javascript/tree/master/react). This document extends and/or overrides those guides, so it take precedence. We also define some basic rules for Redux and CSS stylings.
 
 [![Downloads](https://img.shields.io/npm/dm/@innovatrics/eslint-config-innovatrics.svg)](https://www.npmjs.com/package/@innovatrics/eslint-config-innovatrics)
 [![Downloads](https://img.shields.io/npm/dm/@innovatrics/eslint-config-innovatrics-base.svg)](https://www.npmjs.com/package/@innovatrics/eslint-config-innovatrics-base)
 
+
 <a name="js"></a>
-### [JavaScript](#js)
+## [JavaScript](#js)
+
 
 <a name="booleans"></a>
-#### [Booleans](#booleans)
+### [Booleans](#booleans)
+
 
 If a property or variable is a boolean, use `is` or `has` prefix. ([Accessors - Booleans](https://github.com/airbnb/javascript/blob/master/README.md#accessors--boolean-prefix))
 
@@ -29,8 +33,10 @@ let isGood = false;
 export const updateQuery = function doSomething(hasToOverwriteVersion) {}
 ```
 
+
 <a name="react-images"></a>
-#### [Images in React components](#react-images)
+### [Images in React components](#react-images)
+
 
 Images are in a `/img` subfolder, has size suffix in its name, and imported into React component as a constant with `Png` suffix.
 
@@ -42,8 +48,10 @@ import organization from './organization.png';
 import organizationPng from './img/organization-24x24.png';
 ```
 
+
 <a name="react-ids"></a>
-#### [ID's in React components](#react-ids)
+### [ID's in React components](#react-ids)
+
 
 Correctly setup ID's are essential for proper QA/testing. IDs consist from two parts, `{LEFT}-{RIGHT}`, where `{LEFT}` part is the name of the component, and `{RIGHT}` is any string (words separated with dashes) that makes the whole ID unique. Only `{LEFT}` part is mandatory.
 
@@ -56,8 +64,10 @@ const OurExample = (props) => {
 }
 ```
 
+
 <a name="jsx-bind"></a>
-#### [Bindings in JSX](#jsx-bind)
+### [Bindings in JSX](#jsx-bind)
+
 
 Make sure that the `bind()` is really needed. We often pass down actions
 (which are functions) through props into components, and those do not need
@@ -149,8 +159,10 @@ class Thing extends React.Component {
 }
 ```
 
+
 <a name="redux-naming"></a>
-#### [Redux components / Redux containers naming convention](#redux-naming)
+### [Redux components / Redux containers naming convention](#redux-naming)
+
 
 Redux containers (those React components which use Redux `connect()` to access state) has `Container` postfix in its name - for example `LoadingScreenContainer` is in `/loading-screen.container.jsx`.
 
@@ -168,8 +180,10 @@ All imports must import components/containers under their original name. (So onc
 
 ```
 
+
 <a name="react-methods-props"></a>
-#### [Method and property naming in React](#react-methods-props)
+### [Method and property naming in React](#react-methods-props)
+
 
 The handler methods should be named of the form `handle*`, for example `handleClick`
 or `handleRowSelected`. When sent as props to a component, the property-keys should
@@ -202,8 +216,10 @@ class Thing extends React.Component {
 
 ```
 
+
 <a name="flowtype"></a>
-#### [Using Flow](#flowtype)
+### [Using Flow](#flowtype)
+
 
 If you need to add flow-types for a third-party (npm) module, use
 [flow-typed](https://github.com/flowtype/flow-typed). The files are downloaded into the
@@ -217,9 +233,13 @@ migrate to the file from flow-typed.
 <a name="typed-redux"></a>
 ### [Typed Redux](#typed-redux)
 
+
 Inspired by this [article](https://blog.callstack.io/typed-redux-2aa8bff926ff#.wfxvlbuox)
 
-#### How to write actions/action creators/action types
+
+<a name="redux-actions"></a>
+#### [How to write actions/action creators/action types](#redux-actions)
+
 
 There are 3 types of action creators.
 
@@ -268,7 +288,9 @@ export type ThunkAction = (dispatch: Dispatch, getState?: GetState) => any;
 ```
 
 
-#### How to annotate reducers
+<a name="redux-reducers"></a>
+#### [How to annotate reducers](#redux-reducers)
+
 
 We always describe our state. All reducers should have `type` to avoid a type errors:
 
@@ -377,7 +399,10 @@ We use `Exact<T>` only in reducers. `Exact` type can be imported:
 import type { Exact } from 'app/types';
 ```
 
-#### How to write mapStateToProps()
+
+<a name="redux-mapStateToProps"></a>
+#### [How to write mapStateToProps()](#redux-mapStateToProps)
+
 
 State of whole application has own type called `State`. This type should be used when use `connect()` to map state to props of our containers.
 
@@ -405,11 +430,14 @@ export default connect(
 
 This pattern helps us to reason about the entire app state as well as eliminate common issues, like misspelling the property names.
 
+
 <a name="css"></a>
-### [CSS](#css)
+## [CSS](#css)
+
 
 <a name="css-class-names"></a>
-#### [CSS class naming convention](#css-class-names)
+### [CSS class naming convention](#css-class-names)
+
 
 Our css classes use `in-*` naming conventions. Any css class without `in-` prefix, is a class
 from an external css library (Twitter Bootstrap 4 for example). In case the css class is for QA purpose, use `in-qa-*` convention.
@@ -422,8 +450,10 @@ from an external css library (Twitter Bootstrap 4 for example). In case the css 
 <div className="modal-body" styleName="in-modal-body">...</div>
 ```
 
+
 <a name="naming"></a>
 ## [Files and folders naming conventions](#naming)
+
 
 Project structure is driven by [LIFT Principle](https://github.com/johnpapa/angular-styleguide/tree/master/a1#application-structure-lift-principle). Folder structure is organized with approach `“folders-by-feature”`, not `“folders-by-type”`
 
@@ -458,8 +488,10 @@ Images are in the `/img` sub-folder of the component, in folder. See [React imag
 |-- button.component.scss
 ```
 
+
 <a name="renaming"></a>
 ### [Renaming and/or moving files](#renaming)
+
 
 **NEVER EVER rename a file, by just changing capitalization. Seriously, NEVER !**
 
@@ -480,8 +512,10 @@ $ mv my-Source-Code-File.js my-source-code-file-ex.js
 $ mv my-source-code-file-ex.js my-source-code-file.js
 ```
 
+
 <a name="gitrenaming"></a>
 ### [GIT Renaming and/or moving files](#gitrenaming)
+
 
 To help git track changed files, never rename a file and change its content in one commit.
 
@@ -500,8 +534,9 @@ $ git commit
 $ git commit
 ```
 
+
 <a name="reactstructure"></a>
-## [React/Redux application structure example](#reactstructure)
+### [React/Redux application structure example](#reactstructure)
 
 
 ```
