@@ -380,7 +380,7 @@ import type { FriendState } from '../types';
 
 type State = FriendsState;
 
-const initialState: Exact<State> = {
+const initialState: State = {
     loading: false,
     list: [],
 };
@@ -393,7 +393,7 @@ export function friends(
 }
 ```
 
-We use `Exact<T>` only in reducers. `Exact` type can be imported:
+We use `Exact<T>` only in those 2 places in the definition of the reducer function. `Exact` type can be imported:
 
 ```javascript
 import type { Exact } from 'app/types';
