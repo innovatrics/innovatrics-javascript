@@ -53,7 +53,40 @@ module.exports = {
     // we need to override this one because when the object-keys
     // are numbers, then airbnb wants them unquoted, and flow
     // wants them quoted. and we cannot change it in flow.
-    'quote-props': ['error', 'as-needed', { keywords: false, unnecessary: true, numbers: true }]
+    'quote-props': ['error', 'as-needed', { keywords: false, unnecessary: true, numbers: true }],
+
+    // We have added Storybook .story files [Innovatrics]
+    // Forbid the use of extraneous packages
+    // https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/no-extraneous-dependencies.md
+    // paths are treated both as absolute paths, and relative to process.cwd()
+    'import/no-extraneous-dependencies': ['error', {
+      devDependencies: [
+        'test/**', // tape, common npm pattern
+        'tests/**', // also common npm pattern
+        'spec/**', // mocha, rspec-like pattern
+        '**/__tests__/**', // jest pattern
+        'test.{js,jsx}', // repos with a single test file
+        'test-*.{js,jsx}', // repos with multiple top-level test files
+        '**/*.{test,spec}.{js,jsx}', // tests where the extension denotes that it is a test
+        '**/jest.config.js', // jest config
+        '**/webpack.config.js', // webpack config
+        '**/webpack.config.*.js', // webpack config
+        '**/rollup.config.js', // rollup config
+        '**/rollup.config.*.js', // rollup config
+        '**/gulpfile.js', // gulp config
+        '**/gulpfile.*.js', // gulp config
+        '**/Gruntfile{,.js}', // grunt config
+        '**/protractor.conf.js', // protractor config
+        '**/protractor.conf.*.js', // protractor config
+        '**/*.story.{js,jsx}', // Storybook story files - ADDED by Innovatrics
+      ],
+      optionalDependencies: false,
+    }],
+
+    // We have set `allowChildren` to true [Innovatrics]
+    // require that JSX labels use "htmlFor"
+    // https://github.com/evcohen/eslint-plugin-jsx-a11y/blob/master/docs/rules/label-has-for.md
+    'jsx-a11y/label-has-for': ['error', { components: ['label'], allowChildren: true }],
   },
   // import electron from 'electron' errors because it's in devDependencies, this rule fixes it
   // see: https://github.com/benmosher/eslint-plugin-import/issues/422
