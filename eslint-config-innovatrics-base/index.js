@@ -82,11 +82,6 @@ module.exports = {
       ],
       optionalDependencies: false,
     }],
-
-    // We have set `allowChildren` to true [Innovatrics]
-    // require that JSX labels use "htmlFor"
-    // https://github.com/evcohen/eslint-plugin-jsx-a11y/blob/master/docs/rules/label-has-for.md
-    'jsx-a11y/label-has-for': ['error', { components: ['label'], allowChildren: true }],
   },
   // import electron from 'electron' errors because it's in devDependencies, this rule fixes it
   // see: https://github.com/benmosher/eslint-plugin-import/issues/422
