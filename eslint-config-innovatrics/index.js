@@ -87,13 +87,15 @@ module.exports = {
       optionalDependencies: false,
     }],
 
+
+    // --------------------------------------------------------------------------
+    // Rules under this line are extensions over 'eslint-config-innovatrics-base'
+
+
     // We have set `allowChildren` to true [Innovatrics]
     // require that JSX labels use "htmlFor"
     // https://github.com/evcohen/eslint-plugin-jsx-a11y/blob/master/docs/rules/label-has-for.md
     'jsx-a11y/label-has-for': ['error', { components: ['label'], allowChildren: true }],
-
-    // --------------------------------------------------------------------------
-    // Rules under this line are extensions over 'eslint-config-innovatrics-base'
 
     // airbnb-config is not ready for flow yet,
     // so we override the sort-order rule
