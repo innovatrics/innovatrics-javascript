@@ -229,6 +229,32 @@ and put it into the `flow-typed` folder (not into it's `npm` subfolder). Also, t
 have the type-definition integrated into the `flow-typed` project. If that happens,
 migrate to the file from flow-typed.
 
+<a name="flowtype-bind-method"></a>
+#### [Flowtype and binding react component methods](#flowtype-bind-method)
+
+
+You often have to bind react-component-methods in the constructor, like this:
+
+```
+class Thing extends React.Component {
+    constructor() {
+        this.handleClick = this.handleClick.bind(this);
+    }
+}
+```
+
+Flow does not handle well these binding approaches, see bug
+https://github.com/facebook/flow/issues/5874 , we recommend this workaround:
+
+```
+class Thing extends React.Component {
+    constructor() {
+        (this:any).handleClick = this.handleClick.bind(this);
+    }
+}
+```
+
+
 
 <a name="typed-redux"></a>
 ### [Typed Redux](#typed-redux)
