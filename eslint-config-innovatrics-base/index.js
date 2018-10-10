@@ -6,6 +6,10 @@ module.exports = {
   plugins: [
     "flowtype"
   ],
+
+  /* Every rule here MUST have an argument here. So add a comment with explanation to
+     each rule here.
+   */
   rules: {
     // this fixes the eslint-problem,
     // where eslint cannot find the
@@ -24,23 +28,13 @@ module.exports = {
       "^([A-Z][a-z0-9]*)+$"
     ],
 
-    // We've changed line length from airbnb's 100 to our 120.
-    // specify the maximum length of a line in your program
-    // https://eslint.org/docs/rules/max-len
-    'max-len': ['error', 120, 2, {
-      ignoreUrls: true,
-      ignoreComments: false,
-      ignoreRegExpLiterals: true,
-      ignoreStrings: true,
-      ignoreTemplateLiterals: true,
-    }],
-
     // We've changed minProperties from airbnb's 4 to our 8.
     // enforce line breaks between braces
     // https://eslint.org/docs/rules/object-curly-newline
     'object-curly-newline': ['error', {
-      ObjectExpression: { minProperties: 8, multiline: true, consistent: true },
-      ObjectPattern: { minProperties: 8, multiline: true, consistent: true }
+      minProperties: 8,
+      multiline: true,
+      consistent: true,
     }],
 
     // Dusan hates this one
