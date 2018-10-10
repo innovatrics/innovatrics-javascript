@@ -28,23 +28,13 @@ module.exports = {
       "^([A-Z][a-z0-9]*)+$"
     ],
 
-    // We've changed line length from airbnb's 100 to our 120.
-    // specify the maximum length of a line in your program
-    // https://eslint.org/docs/rules/max-len
-    'max-len': ['error', 120, 2, {
-      ignoreUrls: true,
-      ignoreComments: false,
-      ignoreRegExpLiterals: true,
-      ignoreStrings: true,
-      ignoreTemplateLiterals: true,
-    }],
-
     // We've changed minProperties from airbnb's 4 to our 8.
     // enforce line breaks between braces
     // https://eslint.org/docs/rules/object-curly-newline
     'object-curly-newline': ['error', {
-      ObjectExpression: { minProperties: 8, multiline: true, consistent: true },
-      ObjectPattern: { minProperties: 8, multiline: true, consistent: true }
+      minProperties: 8,
+      multiline: true,
+      consistent: true,
     }],
 
     // Dusan hates this one
@@ -89,13 +79,28 @@ module.exports = {
 
 
     // --------------------------------------------------------------------------
-    // Rules under this line are extensions over 'eslint-config-innovatrics-base'
+    // Rules under this line are extensions over 'eslint-config-innovatrics'
 
 
-    // We have set `allowChildren` to true [Innovatrics]
-    // require that JSX labels use "htmlFor"
-    // https://github.com/evcohen/eslint-plugin-jsx-a11y/blob/master/docs/rules/label-has-for.md
-    'jsx-a11y/label-has-for': ['error', { components: ['label'], allowChildren: true }],
+    // the following rule (jsx-a11y/label-has-for),
+    // is deprecated in eslint-plugin-jsx-a11y,
+    // and jsx-a11y/label-has-associated-control should be used instead.
+    // the airbnb-ruleset still enforces it though,
+    // so we disable the obsolete one completely.
+    'jsx-a11y/label-has-for': 'off',
+
+
+    // the airbnb-rules say that a label has to
+    // BOTH have an htmlFor attribute, and have
+    // the input-element as it's child.
+    // we disagree here, for us it is enough
+    // if one of the two happens.
+    // please note, we have to override the rule-customization,
+    // that airbnb did, so we explicitly set the empty-object
+    // as the second param. just setting the value to 'error'
+    // is not enough.
+    'jsx-a11y/label-has-associated-control': ['error', {}],
+
 
     // airbnb-config is not ready for flow yet,
     // so we override the sort-order rule
@@ -111,14 +116,13 @@ module.exports = {
       ]
     }],
 
-    // we do not agree with airbnb on this
-    // Enforce a defaultProps definition for every prop that is not a required prop
-    // https://github.com/yannickcr/eslint-plugin-react/blob/843d71a432baf0f01f598d7cf1eea75ad6896e4b/docs/rules/require-default-props.md
-    'react/require-default-props': "off",
+    // dusan hates this
+    'react/destructuring-assignment': 'off',
 
     // We will not write propTypes anymore, as they will be discontinued at all by Facebook
     "react/prop-types": "off",
     "react/no-unused-prop-types": "off",
+    'react/require-default-props': "off",
   },
   // import electron from 'electron' errors because it's in devDependencies, this rule fixes it
   // see: https://github.com/benmosher/eslint-plugin-import/issues/422
