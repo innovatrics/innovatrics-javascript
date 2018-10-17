@@ -1,6 +1,6 @@
 {
   "name": "@innovatrics/eslint-config-innovatrics-base",
-  "version": "13.1.0-build.1",
+  "version": "13.1.0-build.2",
   "description": "Innovatrics base JS ESLINT config, following our styleguide",
   "main": "index.js",
   "author": "Innovatrics, s.r.o.",
@@ -10,7 +10,7 @@
   },
   "peerDependencies": {
     "eslint": "^5.6.1",
-    "eslint-plugin-flowtype": "^2.50.3",
+    "eslint-plugin-flowtype": "^3.0.0",
     "eslint-plugin-import": "^2.14.0"
   },
   "repository": "git@github.com:innovatrics/innovatrics-javascript.git"
