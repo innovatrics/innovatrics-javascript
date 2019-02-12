@@ -1,0 +1,24 @@
+{
+  "name": "@innovatrics/eslint-config-innovatrics-typescript",
+  "version": "17.1.0-build.1",
+  "description": "Innovatrics TS ESLINT config, following our styleguide",
+  "main": "index.js",
+  "author": "Innovatrics, s.r.o.",
+  "license": "MIT",
+  "files": [
+    "index.js"
+  ],
+  "dependencies": {
+    "eslint-config-airbnb": "17.1.0"
+  },
+  "peerDependencies": {
+    "@typescript-eslint/eslint-plugin": "^1.3.0",
+    "@typescript-eslint/parser": "^1.3.0",
+    "eslint": "^5.6.1",
+    "eslint-import-resolver-typescript": "^1.1.1",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-jsx-a11y": "^6.1.2",
+    "eslint-plugin-react": "^7.11.1"
+  },
+  "repository": "git@github.com:innovatrics/innovatrics-javascript.git"
+}
