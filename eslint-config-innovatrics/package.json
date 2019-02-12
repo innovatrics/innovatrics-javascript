@@ -1,15 +1,18 @@
 {
   "name": "@innovatrics/eslint-config-innovatrics",
-  "version": "17.1.0-build.2",
+  "version": "17.1.0-build.3",
   "description": "Innovatrics JS ESLINT config, following our styleguide",
   "main": "index.js",
   "author": "Innovatrics, s.r.o.",
   "license": "MIT",
-  "files": [ "index.js" ],
+  "files": [
+    "index.js"
+  ],
   "dependencies": {
     "eslint-config-airbnb": "17.1.0"
   },
   "peerDependencies": {
+    "babel-eslint": "^10.0.1",
     "eslint": "^5.6.1",
     "eslint-plugin-flowtype": "^3.0.0",
     "eslint-plugin-import": "^2.14.0",
