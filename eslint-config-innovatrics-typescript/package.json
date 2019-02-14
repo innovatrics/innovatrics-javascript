@@ -1,6 +1,6 @@
 {
   "name": "@innovatrics/eslint-config-innovatrics-typescript",
-  "version": "17.1.0-build.1",
+  "version": "17.1.0-build.2",
   "description": "Innovatrics TS ESLINT config, following our styleguide",
   "main": "index.js",
   "author": "Innovatrics, s.r.o.",
