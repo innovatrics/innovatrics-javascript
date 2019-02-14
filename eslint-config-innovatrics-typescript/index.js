@@ -4,9 +4,6 @@ module.exports = {
   plugins: ['@typescript-eslint', 'import'],
   extends: ['airbnb', 'plugin:@typescript-eslint/recommended'],
   settings: {
-    'import/parsers': {
-      '@typescript-eslint/parser': ['.ts', '.tsx']
-    },
     'import/resolver': {
       typescript: {}
     }
@@ -52,9 +49,9 @@ module.exports = {
           'tests/**', // also common npm pattern
           'spec/**', // mocha, rspec-like pattern
           '**/__tests__/**', // jest pattern
-          'test.{js,jsx}', // repos with a single test file
-          'test-*.{js,jsx}', // repos with multiple top-level test files
-          '**/*.{test,spec}.{js,jsx}', // tests where the extension denotes that it is a test
+          'test.{ts,tsx}', // repos with a single test file
+          'test-*.{ts,tsx}', // repos with multiple top-level test files
+          '**/*.{test,spec}.{ts,tsx}', // tests where the extension denotes that it is a test
           '**/jest.config.js', // jest config
           '**/webpack.config.js', // webpack config
           '**/webpack.config.*.js', // webpack config
@@ -65,7 +62,7 @@ module.exports = {
           '**/Gruntfile{,.js}', // grunt config
           '**/protractor.conf.js', // protractor config
           '**/protractor.conf.*.js', // protractor config
-          '**/*.story.{js,jsx}' // Storybook story files - ADDED by Innovatrics
+          '**/*.story.{ts,tsx}' // Storybook story files - ADDED by Innovatrics
         ],
         optionalDependencies: false
       }
@@ -116,6 +113,7 @@ module.exports = {
     'react/prop-types': 'off',
     'react/no-unused-prop-types': 'off',
     'react/require-default-props': 'off',
+
     'react/jsx-filename-extension': ['.tsx'],
     '@typescript-eslint/explicit-function-return-type': 'off',
     '@typescript-eslint/explicit-member-accessibility': 'off'
