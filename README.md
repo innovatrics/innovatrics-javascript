@@ -15,7 +15,7 @@ We follow Airbnb JavaScript Style Guide (https://github.com/airbnb/javascript) a
 ### [Booleans](#booleans)
 
 
-If a property or variable is a boolean, use `is` or `has` prefix. ([Accessors - Booleans](https://github.com/airbnb/javascript/blob/master/README.md#accessors--boolean-prefix))
+If a property or variable is a boolean, or function returns boolean, use `is`, `has`, `can` or `should` prefix. ([Accessors - Booleans](https://github.com/airbnb/javascript/blob/master/README.md#accessors--boolean-prefix))
 
 ```javascript
 // bad
@@ -23,6 +23,8 @@ if (!dragon.age()) {
     return false;
 }
 let good = false;
+let sign = false;
+let closeDocument = true;
 export const updateQuery = function doSomething(createVersion) {}
 
 // good
@@ -30,6 +32,8 @@ if (!dragon.hasAge()) {
     return false;
 }
 let isGood = false;
+let canSign = false;
+let shouldCloseDocument = true;
 export const updateQuery = function doSomething(hasToOverwriteVersion) {}
 ```
 
