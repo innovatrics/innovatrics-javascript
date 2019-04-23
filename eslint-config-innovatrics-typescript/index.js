@@ -9,6 +9,66 @@ module.exports = {
     }
   },
   rules: {
+    // the way the typescript-plugin works is that it sometimes
+    // has to override eslint-default rules.
+    // for example, it needs to extend the `camelcase` rule
+    // to handle things that are typescript-specific.
+    // so what it does is it disables the `camelcase` rule,
+    // and creates a `@typescript-eslint/camelcase` rule,
+    // that does the same as the `camelcase` rule + some extra checks.
+    // the problem happens, when the airbnb-rules configure
+    // `camelcase` to something specific, and then
+    // `@typescript-eslint/camelcase` says something else.
+    // so we manually have to check which eslint-rules
+    // does `typescript-eslint disable`, and find those
+    // in airbnb, and copy them here under the `@typescript-eslint/*` rule
+
+    // start of copied-from-airbnb-rules
+    '@typescript-eslint/camelcase': ['error', { properties: 'never' }],
+    '@typescript-eslint/indent': [
+      'error',
+      2,
+      {
+        SwitchCase: 1,
+        VariableDeclarator: 1,
+        outerIIFEBody: 1,
+        FunctionDeclaration: {
+          parameters: 1,
+          body: 1,
+        },
+        FunctionExpression: {
+          parameters: 1,
+          body: 1,
+        },
+        CallExpression: {
+          arguments: 1,
+        },
+        ArrayExpression: 1,
+        ObjectExpression: 1,
+        ImportDeclaration: 1,
+        flatTernaryExpressions: false,
+        ignoredNodes: [
+          'JSXElement',
+          'JSXElement > *',
+          'JSXAttribute',
+          'JSXIdentifier',
+          'JSXNamespacedName',
+          'JSXMemberExpression',
+          'JSXSpreadAttribute',
+          'JSXExpressionContainer',
+          'JSXOpeningElement',
+          'JSXClosingElement',
+          'JSXText',
+          'JSXEmptyExpression',
+          'JSXSpreadChild',
+        ],
+        ignoreComments: false,
+      },
+    ],
+    '@typescript-eslint/no-array-constructor': 'error',
+    '@typescript-eslint/no-unused-vars': ['error', { vars: 'all', args: 'after-used', ignoreRestSiblings: true }],
+    // end of copied-from-airbnb-rules
+
     // We've changed minProperties from airbnb's 4 to our 8.
     // enforce line breaks between braces
     // https://eslint.org/docs/rules/object-curly-newline
