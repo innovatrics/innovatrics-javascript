@@ -624,4 +624,49 @@ $ git commit
 
 ```
 
+## GraphQL guideline
 
+### Relay connection
+
+When writing GraphQL query that includes Relay connection type, make sure to include `@connection` directive with `key` set to name of the connection (see example). It's used for better cache normalisation in ApolloClient.
+
+Example:
+
+```
+query watchlistQuery($id: ID!, $first: Int!) {
+    ...
+    watchlistItemConnection(first: $first) @connection(key: "watchlistItemConnection") {
+        edges {
+            node {...}
+        }
+    }
+}
+```
+
+### Mutations
+
+Mutations that update something, should always return every field that can go into its `input` parameter. Apollo can update cache automatically through the whole application.
+
+Example:
+
+```
+input WatchlistItemUpdateInput {
+    id: ID!
+    displayName: String
+    fullName: String
+    note: String
+    externalId: String
+}
+
+mutation updateWatchlistItem {
+    updateWatchlistItem($input: WatchlistItemUpdateInput!) {
+        watchlistItem {
+            id
+            displayName
+            fullName
+            note
+            externalId
+        }
+    }
+}
+```
