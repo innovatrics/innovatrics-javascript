@@ -624,4 +624,81 @@ $ git commit
 
 ```
 
+## GraphQL guideline
 
+### Relay connection
+
+When writing GraphQL query that includes Relay connection type, make sure to include `@connection` directive with `key` set to name of the connection (see example).
+Connection results are saved in cache with its name and input arguments as key (`watchlistItemConnection(first: 10, after: "abcdefgh")`) - this means different pages are saved under diferent keys (`before`/`after` arguments are diferent each page). `key` in `@connection` directive makes sure results are saved and normalised under `key`, ingoring connection arguments. This is important for adding/removing data from cache after successful mutation, as we wouldn't be able to do it otherwise.
+
+
+Example:
+
+```
+query watchlistQuery($id: ID!, $first: Int!) {
+    ...
+    watchlistItemConnection(first: $first) @connection(key: "watchlistItemConnection") {
+        edges {
+            node {...}
+        }
+    }
+}
+```
+
+### Mutations
+
+Mutations that update something, should always return every field that can go into its `input` parameter. Apollo can update cache automatically through the whole application.
+
+Example:
+
+```
+input WatchlistItemUpdateInput {
+    id: ID!
+    displayName: String
+    fullName: String
+    note: String
+    externalId: String
+}
+
+mutation updateWatchlistItem {
+    updateWatchlistItem($input: WatchlistItemUpdateInput!) {
+        watchlistItem {
+            id
+            displayName
+            fullName
+            note
+            externalId
+        }
+    }
+}
+```
+
+### Delete data from cache
+
+Delete data from cache is a bit tricky, here is an example (using `watchlistItemConnection`):
+```typescript
+// we dont't use pagination arguments in queries reading from apollo cache,
+// as we used `@connection` directive in the original (server) query/queries
+const CACHE_QUERY = gql`
+    ...
+    watchlistItemConnection @connection(key: "watchlistItemConnection") { 
+        edges {
+            node {...}
+        }
+    }
+`;
+
+mutation({
+    variables: { id: watchlistItemId },
+    update: (store: DataProxy) => {
+        const cache = store.readQuery({
+            query: CACHE_QUERY,
+        });
+        cache.watchlistItemConnection.edges = cache.watchlistItemConnection.edges.filter(edge => edge.node.id !== watchlistItemId);
+        store.writeQuery({
+            query: CACHE_QUERY,
+            data: cache,
+        });
+    }
+})'
+```
