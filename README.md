@@ -628,7 +628,9 @@ $ git commit
 
 ### Relay connection
 
-When writing GraphQL query that includes Relay connection type, make sure to include `@connection` directive with `key` set to name of the connection (see example). It's used for better cache normalisation in ApolloClient.
+When writing GraphQL query that includes Relay connection type, make sure to include `@connection` directive with `key` set to name of the connection (see example).
+Connection results are saved in cache with its name and input arguments as key (`watchlistItemConnection(first: 10, after: "abcdefgh")`) - this means different pages are saved under diferent keys (`before`/`after` arguments are diferent each page). `key` in `@connection` directive makes sure results are saved and normalised under `key`, ingoring connection arguments. This is important for adding/removing data from cache after successful mutation, as we wouldn't be able to do it otherwise.
+
 
 Example:
 
@@ -669,4 +671,34 @@ mutation updateWatchlistItem {
         }
     }
 }
+```
+
+### Delete data from cache
+
+Delete data from cache is a bit tricky, here is an example (using `watchlistItemConnection`):
+```typescript
+// we dont't use pagination arguments in queries reading from apollo cache,
+// as we used `@connection` directive in the original (server) query/queries
+const CACHE_QUERY = gql`
+    ...
+    watchlistItemConnection @connection(key: "watchlistItemConnection") { 
+        edges {
+            node {...}
+        }
+    }
+`;
+
+mutation({
+    variables: { id: watchlistItemId },
+    update: (store: DataProxy) => {
+        const cache = store.readQuery({
+            query: CACHE_QUERY,
+        });
+        cache.watchlistItemConnection.edges = cache.watchlistItemConnection.edges.filter(edge => edge.node.id !== watchlistItemId);
+        store.writeQuery({
+            query: CACHE_QUERY,
+            data: cache,
+        });
+    }
+})'
 ```
