@@ -69,100 +69,6 @@ const OurExample = (props) => {
 ```
 
 
-<a name="jsx-bind"></a>
-### [Bindings in JSX](#jsx-bind)
-
-
-Make sure that the `bind()` is really needed. We often pass down actions
-(which are functions) through props into components, and those do not need
-to be bound (because they are functions, not methods).
-
-If the bind only binds the `this` parameter, for example: `this.handleClick.bind(this)`,
-bind it in the constructor, and just use the already-bound function in the JSX:
-
-```javascript
-// bad
-class Thing extends React.Component {
-    handleClick() {
-        this.setState({clicked:true});
-    }
-
-    render() {
-        return <input onClick={this.handleClick.bind(this)} />;
-    }
-}
-
-// good
-class Thing extends React.Component {
-    constructor(props) {
-        super(props);
-
-        this.handleClick = this.handleClick.bind(this);
-    }
-
-    handleClick() {
-        this.setState({clicked:true});
-    }
-
-    render() {
-        return <input onClick={this.handleClick} />;
-    }
-}
-```
-
-If we are binding to two or more params, then these cases really need the binding.
-This is usually of form `something.bind(this, rowNum)` or `something.bind(null, rowNum)`.
-To make the linter happy, we recommend to rewrite them to arrow-functions,
-which work equally well, and the linter does not complain about them:
-`() => something(rowNum)` or `() => this.something(rowNum)`. For example:
-
-```javascript
-// bad
-class Row extends React.Component {
-    render() {
-        return <button onClick={this.props.onClick()} />;
-    }
-}
-
-
-class Thing extends React.Component {
-    handleRowClick(rowId) {
-        this.setState({rowId:rowId});
-    }
-
-    render() {
-        return <div>
-          {this.props.rows.map((row) =>
-            <Row onClick={this.handleRowClick.bind(this, row.id)} />
-          )}
-        </div>;
-    }
-}
-```
-
-```javascript
-// good
-class Row extends React.Component {
-    render() {
-        return <button onClick={this.props.onClick()} />;
-    }
-}
-
-class Thing extends React.Component {
-    handleRowClick(rowId) {
-        this.setState({rowId:rowId});
-    }
-
-    render() {
-        return <div>
-          {this.props.rows.map((row) =>
-              <Row onClick={() => this.handleRowClick(row.id)} />
-          )}
-        </div>;
-    }
-}
-```
-
 
 <a name="redux-naming"></a>
 ### [Redux components / Redux containers naming convention](#redux-naming)
@@ -184,42 +90,33 @@ All imports must import components/containers under their original name. (So onc
 
 ```
 
+<a name="react-event-handler-naming"></a>
+### [Event handler naming in React](#react-event-handler-naming)
 
-<a name="react-methods-props"></a>
-### [Method and property naming in React](#react-methods-props)
-
-
-The handler methods should be named of the form `handle*`, for example `handleClick`
-or `handleRowSelected`. When sent as props to a component, the property-keys should
-be named of the form `on*`, for example `onClick` or `onRowSelected`.
+The handler functions should be named of the form `handle*`, for example `handleClick`
+or `handleStart`. When sent as props to a component, the property-keys should
+be named of the form `on*`, for example `onClick` or `onStart`.
 example:
 
 ```javascript
 
-class Row extends React.Component {
-    render() {
-        return <button onClick={this.props.onClick()} />;
-    }
+function Activator(props) {
+  return <button onClick={this.props.onActivation}>Activate</button>;
 }
 
-class Thing extends React.Component {
+function Thing(props) {
+  const [isActive, setActive] = useState(false);
 
-    handleRowClick(rowId) {
-        this.setState({rowId:rowId});
-        this.props.onRowSelected(rowId);
-    }
+  function handleActivation() {
+    setActive(true);
+  }
 
-    render() {
-        return <div>
-            {this.props.rows.map((row) =>
-                <Row onClick={() => this.handleRowClick(row.id)} />
-            )}
-        </div>;
-    }
+  return <div>
+    Thing is {isActive ? 'Active' : 'Inactive'}
+    <Activator onActivation={handleActivation}/>
+  </div>;
 }
-
 ```
-
 
 <a name="flowtype"></a>
 ### [Using Flow](#flowtype)
