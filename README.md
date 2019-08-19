@@ -526,8 +526,7 @@ $ git commit
 ### Relay connection
 
 When writing GraphQL query that includes Relay connection type, make sure to include `@connection` directive with `key` set to name of the connection (see example).
-Connection results are saved in cache with its name and input arguments as key (`watchlistItemConnection(first: 10, after: "abcdefgh")`) - this means different pages are saved under diferent keys (`before`/`after` arguments are diferent each page). `key` in `@connection` directive makes sure results are saved and normalised under `key`, ingoring connection arguments. This is important for adding/removing data from cache after successful mutation, as we wouldn't be able to do it otherwise.
-
+Connection results are saved in the cache with its name and input arguments as the key (`watchlistItemConnection(first: 10, after: "abcdefgh")`) - this means different pages are saved under different keys (`before`/`after` arguments are different each page). `key` in `@connection` directive makes sure results are saved and normalized under `key`, ignoring connection arguments. This is important for adding/removing data from cache after successful mutation, as we wouldn't be able to do it otherwise.
 
 Example:
 
@@ -535,6 +534,26 @@ Example:
 query watchlistQuery($id: ID!, $first: Int!) {
     ...
     watchlistItemConnection(first: $first) @connection(key: "watchlistItemConnection") {
+        edges {
+            node {...}
+        }
+    }
+}
+```
+If you have the same connection multiple times with different arguments (`first`/`last`, `before`/`after`, `orderBy`...), use `filter` as a second argument to `@connection` directive. `filter` takes an array of connection arguments that Apollo should include in the cache key. Here is an example:
+
+```
+// somewhere in the code
+query firstUsersQuery($first: Int, $after: String) {
+    users(first: $first, after: $after) @connection(key: "users", filter: ["first", "after"]) {
+        edges {
+            node {...}
+        }
+    }
+}
+// different query elsewhere
+query lastUsersQuery($last: Int, $before: String) {
+    users(last: $last, before: $before) @connection(key: "users", filter: ["last", "before"]) {
         edges {
             node {...}
         }
@@ -591,11 +610,14 @@ mutation({
         const cache = store.readQuery({
             query: CACHE_QUERY,
         });
-        cache.watchlistItemConnection.edges = cache.watchlistItemConnection.edges.filter(edge => edge.node.id !== watchlistItemId);
+        // import produce from 'immer'; somewhere up in your code, or some similar library
+        const newCache = produce(cache, acc => {
+            acc.watchlistItemConnection.edges = acc.watchlistItemConnection.edges.filter(edge => edge.node.id !== watchlistItemId);
+        });
         store.writeQuery({
             query: CACHE_QUERY,
-            data: cache,
+            data: newCache,
         });
     }
-})'
+})
 ```
