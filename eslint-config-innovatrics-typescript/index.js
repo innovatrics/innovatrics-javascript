@@ -112,6 +112,16 @@ module.exports = {
     'react/jsx-filename-extension': ['error', { extensions: ['.tsx'] }],
 
     // we do not need to specify the return-type in every function
-    '@typescript-eslint/explicit-function-return-type': 'off'
+    '@typescript-eslint/explicit-function-return-type': 'off',
+
+    // we want to ensure when both type/interface can be used,
+    // "type" is used. the reason is that types will be used anyway
+    // for cases where interfaces cannot be used ( for example
+    // `type Direction = 'left' | 'right';` ), so let's keep
+    // everything uniform as much as possible. technically there
+    // might be situations where we must use an interface,
+    // but those cases seem to be rare (and we will just disable
+    // the rule for that line of code)
+    '@typescript-eslint/consistent-type-definitions': ['error', 'type'],
   }
 };
