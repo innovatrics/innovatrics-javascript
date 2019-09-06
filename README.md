@@ -377,6 +377,43 @@ from an external css library (Twitter Bootstrap 4 for example). In case the css 
 <div className="modal-body" styleName="in-modal-body">...</div>
 ```
 
+<a name="styled-components"></a>
+### [Styled components naming convention](#styled-components)
+
+
+Use `SC` suffix for styled components.
+
+```javascript
+const PanelSC = styled.div`
+  background: blue;
+`;
+const BarSC = styled.div`
+  color: red;
+`;
+
+const Bar = () => {
+    // maybe some code here
+
+    return (
+        <BarSC>
+            <PanelSC>earum nostrum cum</PanelSC>
+            Aut minima assumenda.
+        </BarSC>
+    );
+};
+export default Bar;
+```
+
+**Do not** export styled components directly (as it has a lot of props), but wrap it into simple React component with fewer props.
+
+```javascript
+const FooterSC = styled.footer`
+  text-align: center;
+`;
+
+const Footer = () => <FooterSC>doloremque quasi similique</FooterSC>;
+export default Footer;
+```
 
 <a name="naming"></a>
 ## [Files and folders naming conventions](#naming)
