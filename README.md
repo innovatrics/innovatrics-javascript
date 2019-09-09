@@ -628,7 +628,10 @@ mutation updateWatchlistItem {
 
 ### Delete data from cache
 
-Delete data from cache is a bit tricky, here is an example (using `watchlistItemConnection`):
+Delete data from cache is a bit tricky. `store.readQuery()` throws an error, when you try to read data that aren't in the store.
+
+Here is an example (using `watchlistItemConnection`):
+
 ```typescript
 // we dont't use pagination arguments in queries reading from apollo cache,
 // as we used `@connection` directive in the original (server) query/queries
@@ -644,17 +647,21 @@ const CACHE_QUERY = gql`
 mutation({
     variables: { id: watchlistItemId },
     update: (store: DataProxy) => {
-        const cache = store.readQuery({
-            query: CACHE_QUERY,
-        });
-        // import produce from 'immer'; somewhere up in your code, or some similar library
-        const newCache = produce(cache, acc => {
-            acc.watchlistItemConnection.edges = acc.watchlistItemConnection.edges.filter(edge => edge.node.id !== watchlistItemId);
-        });
-        store.writeQuery({
-            query: CACHE_QUERY,
-            data: newCache,
-        });
+        try {
+            const cache = store.readQuery({
+                query: CACHE_QUERY,
+            });
+            // import produce from 'immer'; somewhere up in your code, or some similar library
+            const newCache = produce(cache, acc => {
+                acc.watchlistItemConnection.edges = acc.watchlistItemConnection.edges.filter(edge => edge.node.id !== watchlistItemId);
+            });
+            store.writeQuery({
+                query: CACHE_QUERY,
+                data: newCache,
+            });
+        } catch (e) {
+            // just ignore this, as we don't have data to update in the store
+        }
     }
 })
 ```
