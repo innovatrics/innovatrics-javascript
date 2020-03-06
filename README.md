@@ -37,6 +37,17 @@ let shouldCloseDocument = true;
 export const updateQuery = function doSomething(hasToOverwriteVersion) {}
 ```
 
+<a name="common-variable-names"></a>
+
+### [Common variable namess](#common-variable-names)
+
+To consistently write certain variable names, we use these rules:
+
+- `url` is all lowercase, when it is the whole variable name, like `const url = 'x';`
+- `URL` is all uppercase, when it is part of a longer variable name, like `const photoURL = 'x'`
+- `id` is all lowercase, when it is the whole variable name, like `const id = 'x'`
+- `Id` is written as uppercase `I` and lowercase `d` when part of a longer variable name, like `const imageId = 'x'`
+
 
 <a name="react-images"></a>
 ### [Images in React components](#react-images)
