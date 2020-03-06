@@ -43,10 +43,17 @@ export const updateQuery = function doSomething(hasToOverwriteVersion) {}
 
 To consistently write certain variable names, we use these rules:
 
-- `url` is all lowercase, when it is the whole variable name, like `const url = 'x';`
-- `URL` is all uppercase, when it is part of a longer variable name, like `const photoURL = 'x'`
-- `id` is all lowercase, when it is the whole variable name, like `const id = 'x'`
-- `Id` is written as uppercase `I` and lowercase `d` when part of a longer variable name, like `const imageId = 'x'`
+- if the name is an acronym, like `URL` comes from `Uniform Resource Locator`, we write it lowercase when it is alone, and all uppercase when part of a longer name
+- if the name is an abbreviation of a longer word, like `id` (from `identifier`) or `src` (from `source`), we write it lowercase when it is alone, and camel case when part of a longer name
+
+examples:
+
+- `const url = 'x'`
+- `const imageURL = 'x'`
+- `const id = 'x'`
+- `const imageId = 'x'`
+- `const src = 'x'`
+- `const imgSrc = 'x'`
 
 
 <a name="react-images"></a>
