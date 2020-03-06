@@ -560,6 +560,10 @@ $ git commit
 
 ## GraphQL guideline
 
+### Generating Typescript type definitions
+
+When using typescript, use a tool like [GraphQL Code Generator](https://graphql-code-generator.com/) to automatically generate typescript type definitions for your graphql queries.
+
 ### Relay connection
 
 When writing GraphQL query that includes Relay connection type, make sure to include `@connection` directive with `key` set to name of the connection (see example).
