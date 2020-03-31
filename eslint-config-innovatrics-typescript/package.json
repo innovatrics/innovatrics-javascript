@@ -1,6 +1,6 @@
 {
   "name": "@innovatrics/eslint-config-innovatrics-typescript",
-  "version": "18.0.1-build.1",
+  "version": "18.1.0-build.1",
   "description": "Innovatrics TS ESLINT config, following our styleguide",
   "main": "index.js",
   "author": "Innovatrics, s.r.o.",
@@ -9,16 +9,16 @@
     "index.js"
   ],
   "dependencies": {
-    "eslint-config-airbnb": "18.0.1"
+    "eslint-config-airbnb": "^18.1.0"
   },
   "peerDependencies": {
     "@typescript-eslint/eslint-plugin": "^2.0.0",
     "@typescript-eslint/parser": "^2.0.0",
-    "eslint": "^6.1.0",
-    "eslint-plugin-import": "^2.18.2",
+    "eslint": "^6.8.0",
+    "eslint-plugin-import": "^2.20.2",
     "eslint-plugin-jsx-a11y": "^6.2.3",
-    "eslint-plugin-react": "^7.14.3",
-    "eslint-plugin-react-hooks": "^1.7.0"
+    "eslint-plugin-react": "^7.19.0",
+    "eslint-plugin-react-hooks": "^2.5.1"
   },
   "repository": "git@github.com:innovatrics/innovatrics-javascript.git"
 }

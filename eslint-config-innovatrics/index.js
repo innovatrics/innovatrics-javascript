@@ -81,15 +81,6 @@ module.exports = {
     // --------------------------------------------------------------------------
     // Rules under this line are extensions over 'eslint-config-innovatrics'
 
-
-    // the following rule (jsx-a11y/label-has-for),
-    // is deprecated in eslint-plugin-jsx-a11y,
-    // and jsx-a11y/label-has-associated-control should be used instead.
-    // the airbnb-ruleset still enforces it though,
-    // so we disable the obsolete one completely.
-    'jsx-a11y/label-has-for': 'off',
-
-
     // the airbnb-rules say that a label has to
     // BOTH have an htmlFor attribute, and have
     // the input-element as it's child.
@@ -123,10 +114,5 @@ module.exports = {
     "react/prop-types": "off",
     "react/no-unused-prop-types": "off",
     'react/require-default-props': "off",
-  },
-  // import electron from 'electron' errors because it's in devDependencies, this rule fixes it
-  // see: https://github.com/benmosher/eslint-plugin-import/issues/422
-  "settings": {
-    "import/core-modules": ["electron"],
   },
 };
