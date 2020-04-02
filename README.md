@@ -3,9 +3,16 @@
 
 We follow Airbnb JavaScript Style Guide (https://github.com/airbnb/javascript) and Airbnb React/JSX Style Guide (https://github.com/airbnb/javascript/tree/master/react). This document extends and/or overrides those guides, so it take precedence. We also define some basic rules for Redux and CSS stylings.
 
-[![Downloads](https://img.shields.io/npm/dm/@innovatrics/eslint-config-innovatrics.svg)](https://www.npmjs.com/package/@innovatrics/eslint-config-innovatrics)
-[![Downloads](https://img.shields.io/npm/dm/@innovatrics/eslint-config-innovatrics-base.svg)](https://www.npmjs.com/package/@innovatrics/eslint-config-innovatrics-base)
+our linter packages, their naming style copies the one used by airbnb:
 
+- [@innovatrics/eslint-config-innovatrics-typescript ![Downloads](https://img.shields.io/npm/dm/@innovatrics/eslint-config-innovatrics-typescript.svg)](https://www.npmjs.com/package/@innovatrics/eslint-config-innovatrics)
+  - typescript + react, mostly used for client-side code
+- [@innovatrics/eslint-config-innovatrics-typescript-base ![Downloads](https://img.shields.io/npm/dm/@innovatrics/eslint-config-innovatrics-typescript-base.svg)](https://www.npmjs.com/package/@innovatrics/eslint-config-innovatrics-base)
+  - typescript, mostly used for server-side code
+- [@innovatrics/eslint-config-innovatrics ![Downloads](https://img.shields.io/npm/dm/@innovatrics/eslint-config-innovatrics.svg)](https://www.npmjs.com/package/@innovatrics/eslint-config-innovatrics)
+  - flow + react, mostly used for client-side code
+- [@innovatrics/eslint-config-innovatrics-base ![Downloads](https://img.shields.io/npm/dm/@innovatrics/eslint-config-innovatrics-base.svg)](https://www.npmjs.com/package/@innovatrics/eslint-config-innovatrics-base)
+  - flow, mostly used for server-side code
 
 <a name="js"></a>
 ## [JavaScript](#js)
