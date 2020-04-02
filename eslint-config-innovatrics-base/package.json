@@ -9,7 +9,7 @@
     "index.js"
   ],
   "dependencies": {
-    "eslint-config-airbnb-base": "^14.1.0"
+    "eslint-config-airbnb-base": "14.1.0"
   },
   "peerDependencies": {
     "babel-eslint": "^10.1.0",
