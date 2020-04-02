@@ -7,7 +7,7 @@ our linter packages, their naming style copies the one used by airbnb:
 
 - [@innovatrics/eslint-config-innovatrics-typescript ![Downloads](https://img.shields.io/npm/dm/@innovatrics/eslint-config-innovatrics-typescript.svg)](https://www.npmjs.com/package/@innovatrics/eslint-config-innovatrics)
   - typescript + react, mostly used for client-side code
-- [@innovatrics/eslint-config-innovatrics-typescript ![Downloads](https://img.shields.io/npm/dm/@innovatrics/eslint-config-innovatrics-typescript-base.svg)](https://www.npmjs.com/package/@innovatrics/eslint-config-innovatrics-base)
+- [@innovatrics/eslint-config-innovatrics-typescript-base ![Downloads](https://img.shields.io/npm/dm/@innovatrics/eslint-config-innovatrics-typescript-base.svg)](https://www.npmjs.com/package/@innovatrics/eslint-config-innovatrics-base)
   - typescript, mostly used for server-side code
 - [@innovatrics/eslint-config-innovatrics ![Downloads](https://img.shields.io/npm/dm/@innovatrics/eslint-config-innovatrics.svg)](https://www.npmjs.com/package/@innovatrics/eslint-config-innovatrics)
   - flow + react, mostly used for client-side code
