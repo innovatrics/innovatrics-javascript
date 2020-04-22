@@ -1,4 +1,4 @@
-# Innovatrics JavaScript Style Guide (version 2020-04-02)
+# Innovatrics JavaScript Style Guide (version 2020-04-22)
 
 
 We follow Airbnb JavaScript Style Guide (https://github.com/airbnb/javascript) and Airbnb React/JSX Style Guide (https://github.com/airbnb/javascript/tree/master/react). This document extends and/or overrides those guides, so it take precedence. We also define some basic rules for Redux and CSS stylings.
@@ -67,14 +67,16 @@ examples:
 ### [Images in React components](#react-images)
 
 
-Images are in a `/img` subfolder, has size suffix in its name, and imported into React component as a constant with `Png` suffix.
+Images are in a `/img` subfolder, has size suffix in its name, and imported into React component as a constant with image type suffix (`Png`, `Svg`, `Jpg`, ...).
 
 ```javascript
 // bad
 import organization from './organization.png';
+import phone from '../../common/phone.svg';
 
 // good
 import organizationPng from './img/organization-24x24.png';
+import phoneSvg from './img/phone.svg';
 ```
 
 
