@@ -1,6 +1,6 @@
 {
   "name": "@innovatrics/eslint-config-innovatrics-base",
-  "version": "14.1.0-build.1",
+  "version": "14.2.0-build.1",
   "description": "Innovatrics base JS ESLINT config, following our styleguide",
   "main": "index.js",
   "author": "Innovatrics, s.r.o.",
@@ -9,13 +9,13 @@
     "index.js"
   ],
   "dependencies": {
-    "eslint-config-airbnb-base": "14.1.0"
+    "eslint-config-airbnb-base": "14.2.0"
   },
   "peerDependencies": {
     "babel-eslint": "^10.1.0",
-    "eslint": "^6.8.0",
-    "eslint-plugin-flowtype": "^4.7.0",
-    "eslint-plugin-import": "^2.20.2"
+    "eslint": "^7.4.0",
+    "eslint-plugin-flowtype": "^5.2.0",
+    "eslint-plugin-import": "^2.22.0"
   },
   "repository": "git@github.com:innovatrics/innovatrics-javascript.git"
 }
