@@ -31,6 +31,7 @@ module.exports = {
     // one has to decide to accept typescript-plugin's opinion,
     // and do nothing, or copy the airbnb rule here.
 
+    // start of copied-from-airbnb-rules
     "@typescript-eslint/no-unused-vars": [
       "error",
       { vars: "all", args: "after-used", ignoreRestSiblings: true },
@@ -51,6 +52,7 @@ module.exports = {
 
     // Dusan hates this one
     "no-lonely-if": "off",
+    "no-else-return": "off",
 
     // we do not agree with airbnb on this
     // see this for a discussion: https://github.com/airbnb/javascript/issues/1135
@@ -91,13 +93,8 @@ module.exports = {
         optionalDependencies: false,
       },
     ],
-
-    // --------------------------------------------------------------------------
-    // Rules under this line are extensions over 'eslint-config-innovatrics'
-
     // we do not need to specify the return-type in every function
     "@typescript-eslint/explicit-function-return-type": "off",
-
     // we want to ensure when both type/interface can be used,
     // "type" is used. the reason is that types will be used anyway
     // for cases where interfaces cannot be used ( for example
@@ -107,7 +104,9 @@ module.exports = {
     // but those cases seem to be rare (and we will just disable
     // the rule for that line of code)
     "@typescript-eslint/consistent-type-definitions": ["error", "type"],
-    "@typescript-eslint/explicit-module-boundary-types": "off",
+    // @typescript-esling changed `camelcase` rule to `naming-convention`
+    // we allow UPPER_CASE for QUERY variables (GraphQL) and PascalCase for React components
+    // typeLike is always PascalCase (type ImageFormat = ...)
     "@typescript-eslint/naming-convention": [
       "error",
       {
@@ -117,6 +116,8 @@ module.exports = {
       },
       { selector: "typeLike", format: ["PascalCase"] },
     ],
+    // renamed `ban-ts-ignore`
+    // we don't allow usage of `@ts-ignore` and such
     "@typescript-eslint/ban-ts-comment": 2,
   },
 };
