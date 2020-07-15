@@ -117,7 +117,10 @@ module.exports = {
 
     // We will not write propTypes anymore, as they will be discontinued at all by Facebook
     "react/prop-types": "off",
+    // We will not write propTypes anymore, as they will be discontinued at all by Facebook
     "react/no-unused-prop-types": "off",
+    // airbnb-config wants this to be turned on, but we don't need it
+    // as we take care of optional props our own way
     "react/require-default-props": "off",
   },
 };
