@@ -34,7 +34,7 @@ module.exports = {
 
     // Dusan hates this one
     "no-lonely-if": "off",
-    "no-else-return": "off",
+    "no-else-return": "on",
 
     // we do not agree with airbnb on this
     // see this for a discussion: https://github.com/airbnb/javascript/issues/1135
