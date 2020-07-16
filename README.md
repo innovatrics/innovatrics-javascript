@@ -1,4 +1,4 @@
-# Innovatrics JavaScript Style Guide (version 2020-04-22)
+# Innovatrics JavaScript Style Guide (version 2020-07-16)
 
 
 We follow Airbnb JavaScript Style Guide (https://github.com/airbnb/javascript) and Airbnb React/JSX Style Guide (https://github.com/airbnb/javascript/tree/master/react). This document extends and/or overrides those guides, so it take precedence. We also define some basic rules for Redux and CSS stylings.
