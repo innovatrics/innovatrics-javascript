@@ -1,6 +1,6 @@
 {
   "name": "@innovatrics/eslint-config-innovatrics",
-  "version": "18.2.0-build.1",
+  "version": "18.2.0-build.2",
   "description": "Innovatrics JS ESLINT config, following our styleguide",
   "main": "index.js",
   "author": "Innovatrics, s.r.o.",
