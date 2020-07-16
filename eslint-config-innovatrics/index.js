@@ -1,7 +1,7 @@
 // FIXME duplicit eslint config
 module.exports = {
   root: true,
-  extends: "airbnb",
+  extends: ["airbnb", "plugin:react-hooks/recommended"],
   parser: "babel-eslint",
   plugins: ["flowtype"],
 
@@ -83,6 +83,15 @@ module.exports = {
 
     // --------------------------------------------------------------------------
     // Rules under this line are extensions over 'eslint-config-innovatrics'
+
+    "import/extensions": [
+      "error",
+      "always",
+      {
+        js: "never",
+        jsx: "never",
+      },
+    ],
 
     // the airbnb-rules say that a label has to
     // BOTH have an htmlFor attribute, and have

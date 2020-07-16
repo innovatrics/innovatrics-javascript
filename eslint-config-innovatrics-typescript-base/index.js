@@ -59,6 +59,13 @@ module.exports = {
     // see this for a discussion: https://github.com/airbnb/javascript/issues/1135
     "import/prefer-default-export": "off",
 
+    // sometimes the variable has the underscore at the beginning,
+    // for example `__typename` in graphql.
+    // also, prefixing a method-name with `_` is a simple way to
+    // signalize that a method is private-ish, without having
+    // to enforce it.
+    "no-underscore-dangle": "off",
+
     // We have added Storybook .story files [Innovatrics]
     // Forbid the use of extraneous packages
     // https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/no-extraneous-dependencies.md
@@ -105,6 +112,8 @@ module.exports = {
     // but those cases seem to be rare (and we will just disable
     // the rule for that line of code)
     "@typescript-eslint/consistent-type-definitions": ["error", "type"],
+    // we turn this one off, because the next rule (naming-convention) takes care of this
+    camelcase: "off",
     // @typescript-esling changed `camelcase` rule to `naming-convention`
     // we allow UPPER_CASE for QUERY variables (GraphQL) and PascalCase for React components
     // typeLike is always PascalCase (type ImageFormat = ...)
@@ -120,5 +129,32 @@ module.exports = {
     // renamed `ban-ts-ignore`
     // we don't allow usage of `@ts-ignore` and such
     "@typescript-eslint/ban-ts-comment": 2,
+
+    // every dependency is a dev-dependency for us,
+    // because we build every production-thing
+    // into it's own bundle, both the server and client.
+    // so we have to allow importing-from-dev-dependencies.
+    // later we might move this override into the innovatrics
+    // ruleset.
+    "import/no-extraneous-dependencies": [
+      "error",
+      {
+        devDependencies: true,
+        optionalDependencies: false,
+        peerDependencies: false,
+        bundledDependencies: false,
+      },
+    ],
+    // --------------------------------------------------------------------------
+    // Rules under this line are extensions over 'eslint-config-innovatrics'
+
+    "import/extensions": [
+      "error",
+      "always",
+      {
+        js: "never",
+        ts: "never",
+      },
+    ],
   },
 };
