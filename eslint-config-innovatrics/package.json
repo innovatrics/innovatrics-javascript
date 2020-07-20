@@ -1,6 +1,6 @@
 {
   "name": "@innovatrics/eslint-config-innovatrics",
-  "version": "18.2.0-build.2",
+  "version": "18.2.0-build.3",
   "description": "Innovatrics JS ESLINT config, following our styleguide",
   "main": "index.js",
   "author": "Innovatrics, s.r.o.",
@@ -18,7 +18,8 @@
     "eslint-plugin-import": "^2.22.0",
     "eslint-plugin-jsx-a11y": "^6.3.1",
     "eslint-plugin-react": "^7.20.3",
-    "eslint-plugin-react-hooks": "^4.0.8"
+    "eslint-plugin-react-hooks": "^4.0.8",
+    "prettier": "^2.0.0"
   },
   "repository": "git@github.com:innovatrics/innovatrics-javascript.git"
 }

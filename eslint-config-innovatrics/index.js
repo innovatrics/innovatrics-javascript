@@ -1,7 +1,12 @@
 // FIXME duplicit eslint config
 module.exports = {
   root: true,
-  extends: ["airbnb", "plugin:react-hooks/recommended"],
+  extends: [
+    "airbnb",
+    "plugin:react-hooks/recommended",
+    "prettier",
+    "prettier/react",
+  ],
   parser: "babel-eslint",
   plugins: ["flowtype"],
 
@@ -19,18 +24,6 @@ module.exports = {
 
     // enforce consistent flow type-names
     "flowtype/type-id-match": ["error", "^([A-Z][a-z0-9]*)+$"],
-
-    // We've changed minProperties from airbnb's 4 to our 8.
-    // enforce line breaks between braces
-    // https://eslint.org/docs/rules/object-curly-newline
-    "object-curly-newline": [
-      "error",
-      {
-        minProperties: 8,
-        multiline: true,
-        consistent: true,
-      },
-    ],
 
     // Dusan hates this one
     "no-lonely-if": "off",
