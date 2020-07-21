@@ -6,6 +6,9 @@ module.exports = {
     "airbnb",
     "plugin:@typescript-eslint/recommended",
     "plugin:react-hooks/recommended",
+    "prettier",
+    "prettier/@typescript-eslint",
+    "prettier/react",
   ],
   settings: {
     "import/resolver": {
@@ -41,18 +44,6 @@ module.exports = {
       { vars: "all", args: "after-used", ignoreRestSiblings: true },
     ],
     // end of copied-from-airbnb-rules
-
-    // We've changed minProperties from airbnb's 4 to our 8.
-    // enforce line breaks between braces
-    // https://eslint.org/docs/rules/object-curly-newline
-    "object-curly-newline": [
-      "error",
-      {
-        minProperties: 8,
-        multiline: true,
-        consistent: true,
-      },
-    ],
 
     // Dusan hates this one
     "no-lonely-if": "off",
