@@ -6,6 +6,7 @@
   "repository": "https://github.com/ronaldruzicka/eslint-config-typescript-react",
   "author": "Innovatrics, s.r.o.",
   "license": "MIT",
+  "private": false,
   "peerDependencies": {
     "@typescript-eslint/eslint-plugin": "^4.28.3",
     "@typescript-eslint/parser": "^4.28.3",
