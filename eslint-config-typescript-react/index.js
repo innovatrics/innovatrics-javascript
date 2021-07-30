@@ -6,11 +6,14 @@ module.exports = {
     node: true, // Node.js global variables and Node.js scoping.
   },
   extends: [
-    // Uses the recommended rules from @eslint-plugin-react
-    'plugin:react/recommended',
-
     // Uses the recommended rules from the @typescript-eslint/eslint-plugin
     'plugin:@typescript-eslint/recommended',
+
+    // Uses rules from eslint-config-airbnb-typescript plugin
+    'airbnb-typescript',
+
+    // Uses the recommended rules from @eslint-plugin-react
+    'plugin:react/recommended',
 
     // This ESLint plugin enforces the Rules of Hooks.
     // https://reactjs.org/docs/hooks-rules.html
@@ -20,14 +23,11 @@ module.exports = {
     // https://github.com/jsx-eslint/eslint-plugin-jsx-a11y
     'plugin:jsx-a11y/recommended',
 
-    // Uses rules from eslint-config-airbnb-typescript plugin
-    'airbnb-typescript',
-
     // Uses the all recommended rules from prettier plugin
-    'prettier',
+    // https://github.com/prettier/eslint-config-prettier/blob/main/CHANGELOG.md#version-800-2021-02-21
+    'plugin:prettier/recommended',
   ],
-  // TODO: should we ignore .js files?
-  ignorePatterns: ['node_modules/*', '*.js'], // Ignore node_modules and .next generated files
+  ignorePatterns: ['node_modules/*'], // Ignore node_modules and .next generated files
   parser: '@typescript-eslint/parser',
   parserOptions: {
     ecmaVersion: 2021, // Allows for the parsing of modern ECMAScript features
@@ -35,18 +35,10 @@ module.exports = {
     ecmaFeatures: {
       jsx: true, // Allows for the parsing of JSX
     },
-    // TODO: should we keep these two lines or define per project?
     tsconfigRootDir: __dirname,
     project: ['./tsconfig.json'],
   },
-  plugins: [
-    '@typescript-eslint',
-    'import',
-    'jsx-a11y',
-    'prettier',
-    'react-hooks',
-    'react',
-  ],
+  plugins: ['@typescript-eslint', 'import', 'jsx-a11y', 'prettier', 'react-hooks', 'react'],
   settings: {
     react: {
       version: 'detect', // Tells eslint-plugin-react to automatically detect the version of React to use
@@ -85,7 +77,7 @@ module.exports = {
 
     // Use consistent type definitions, prefer "type" over "interface"
     // https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/consistent-type-definitions.md
-    "@typescript-eslint/consistent-type-definitions": ["error", "type"],
+    '@typescript-eslint/consistent-type-definitions': ['error', 'type'],
 
     // Enforces naming conventions for everything across the codebase
     // https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/naming-convention.md
@@ -150,7 +142,7 @@ module.exports = {
 
     // Specify curly brace conventions for all control statements
     // https://eslint.org/docs/rules/curly
-    'curly': ['error', 'all'],
+    curly: ['error', 'all'],
 
     // Enforce blank lines:
     // Before every return, case, default and try
@@ -221,6 +213,22 @@ module.exports = {
     // https://github.com/yannickcr/eslint-plugin-react/blob/97a9f397d2a8a3ce3b2af893bdbb86bb2c1d4480/docs/rules/self-closing-comp.md
     'react/self-closing-comp': ['error', { component: true }],
 
+    // This formatting rule is handled by Prettier
+    // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-wrap-multilines.md
+    'react/jsx-wrap-multilines': 'off',
+
+    // This formatting rule is handled by Prettier
+    // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-curly-newline.md
+    'react/jsx-curly-newline': 'off',
+
+    // This formatting rule is handled by Prettier
+    // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-one-expression-per-line.md
+    'react/jsx-one-expression-per-line': 'off',
+
+    // Not needed with Typescript
+    // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/require-default-props.md
+    'react/require-default-props': 'off',
+
     /**
      * Import
      */
@@ -244,4 +252,4 @@ module.exports = {
     // https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/no-cycle.md
     'import/no-cycle': ['warn'],
   },
-}
+};
