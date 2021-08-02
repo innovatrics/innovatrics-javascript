@@ -1,4 +1,4 @@
-# eslint-config-typescript-react
+# @innovatrics/eslint-config-typescript-react
 
 Eslint configuration for React projects written in Typescript
 
@@ -14,13 +14,18 @@ You need to have installed `eslint`, `prettier` and `@typescript-eslint/parser`
 **Yarn**
 
 ```
-yarn add -D eslint-config-typescript-react eslint-config-airbnb-typescript eslint-config-prettier
+yarn add -D @innovatrics/eslint-config-typescript-react \
+            eslint-config-airbnb-typescript \
+            eslint-config-prettier
 ```
 
 **NPM**
 
 ```
-npm install eslint-config-typescript-react eslint-config-airbnb-typescript --save-dev
+npm install @innovatrics/eslint-config-typescript-react \
+            eslint-config-airbnb-typescript \
+            eslint-config-prettier \
+            --save-dev
 ```
 
 ### 2. Install plugins
