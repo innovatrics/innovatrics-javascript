@@ -1,6 +1,6 @@
 {
   "name": "@innovatrics/eslint-config-typescript-react",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Innovatrics Typescript Eslint config for React projects, following our styleguide",
   "main": "index.js",
   "repository": "https://github.com/innovatrics/innovatrics-javascript/tree/master/eslint-config-typescript-react",
