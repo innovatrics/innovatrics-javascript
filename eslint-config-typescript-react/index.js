@@ -184,6 +184,7 @@ module.exports = {
           'multiline-const',
           'multiline-let',
           'multiline-var',
+          'export',
         ],
         next: '*',
       },
@@ -246,10 +247,39 @@ module.exports = {
 
     // Allow any order of import statements
     // https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/order.md
-    'import/order': ['error', { groups: ['builtin', 'external'] }],
+    'import/order': [
+      'error',
+      {
+        alphabetize: { order: 'asc' },
+        groups: [
+          ['builtin', 'external'],
+          ['parent', 'sibling', 'index'],
+        ],
+        'newlines-between': 'always',
+      },
+    ],
 
     // Ensures that there is no resolvable path back to this module via its dependencies.
     // https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/no-cycle.md
     'import/no-cycle': ['warn'],
+
+    // Allow devDependencies for following files and folders
+    // https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/no-extraneous-dependencies.md
+    'import/no-extraneous-dependencies': [
+      'error',
+      {
+        devDependencies: [
+          '**/*.stories.tsx',
+          '**/*.test.{ts,tsx}',
+          '**/*.spec.{ts,tsx}',
+          '**/__tests__/**',
+          '**/__spec__/**',
+          '**/jest.config.{js,ts}',
+          '**/webpack.config.{js,ts}',
+          '**/webpack.config.*.{js,ts}',
+          '**/vite.config.{js,ts}',
+        ]
+      }
+    ]
   },
 };
