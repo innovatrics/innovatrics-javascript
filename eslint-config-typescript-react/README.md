@@ -16,6 +16,7 @@ You need to have installed `eslint`, `prettier` and `@typescript-eslint/parser`
 ```
 yarn add -D @innovatrics/eslint-config-typescript-react \
             eslint-config-airbnb-typescript \
+            eslint-config-airbnb-base \
             eslint-config-prettier
 ```
 
@@ -24,6 +25,7 @@ yarn add -D @innovatrics/eslint-config-typescript-react \
 ```
 npm install @innovatrics/eslint-config-typescript-react \
             eslint-config-airbnb-typescript \
+            eslint-config-airbnb-base \
             eslint-config-prettier \
             --save-dev
 ```
