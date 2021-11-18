@@ -88,13 +88,6 @@ module.exports = {
         selector: 'variable',
         format: ['camelCase', 'PascalCase', 'UPPER_CASE'],
       },
-      // Enforce prefix for boolean variables
-      {
-        selector: 'variable',
-        types: ['boolean'],
-        format: ['PascalCase'],
-        prefix: ['is', 'should', 'has', 'can', 'did', 'will'],
-      },
       // Use camelCase for functions
       // Use PascalCase for React components
       {
@@ -162,12 +155,13 @@ module.exports = {
         prev: ['const', 'let', 'var', 'export'],
         next: ['const', 'let', 'var', 'export'],
       },
-      // Always require blank lines before and after class declaration, if, do/while, switch, try
+      // Always require blank lines before class declaration, if, do/while, switch, try, break
       {
         blankLine: 'always',
         prev: '*',
-        next: ['if', 'class', 'for', 'do', 'while', 'switch', 'try'],
+        next: ['if', 'class', 'for', 'do', 'while', 'switch', 'try', 'break'],
       },
+      // Always require blank lines after class declaration, if, do/while, switch, try
       {
         blankLine: 'always',
         prev: ['if', 'class', 'for', 'do', 'while', 'switch', 'try'],
