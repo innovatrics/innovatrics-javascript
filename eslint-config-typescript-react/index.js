@@ -35,8 +35,6 @@ module.exports = {
     ecmaFeatures: {
       jsx: true, // Allows for the parsing of JSX
     },
-    tsconfigRootDir: __dirname,
-    project: ['./tsconfig.json'],
   },
   plugins: ['@typescript-eslint', 'import', 'jsx-a11y', 'prettier', 'react-hooks', 'react'],
   settings: {
@@ -144,17 +142,15 @@ module.exports = {
     // https://eslint.org/docs/rules/padding-line-between-statements
     'padding-line-between-statements': [
       'error',
-      // Always require blank lines after import, except between imports
+      // Always require blank lines after import
       { blankLine: 'always', prev: 'import', next: '*' },
+      // Allow no or any empty lines between imports
       { blankLine: 'any', prev: 'import', next: 'import' },
       // Always require blank lines before and after every sequence of variable declarations and export
-      { blankLine: 'always', prev: '*', next: ['const', 'let', 'var', 'export'] },
-      { blankLine: 'always', prev: ['const', 'let', 'var', 'export'], next: '*' },
-      {
-        blankLine: 'any',
-        prev: ['const', 'let', 'var', 'export'],
-        next: ['const', 'let', 'var', 'export'],
-      },
+      { blankLine: 'always', prev: '*', next: ['const', 'let', 'export'] },
+      { blankLine: 'always', prev: ['const', 'let', 'export'], next: '*' },
+      // Allow no or any empty lines between variable declarations
+      { blankLine: 'any', prev: ['const', 'let'], next: ['const', 'let'] },
       // Always require blank lines before class declaration, if, do/while, switch, try, break
       {
         blankLine: 'always',
@@ -182,6 +178,8 @@ module.exports = {
         ],
         next: '*',
       },
+      // Allow no or any empty lines between exports
+      { blankLine: 'any', prev: ['export'], next: ['export'] },
     ],
 
     /**
@@ -272,8 +270,8 @@ module.exports = {
           '**/webpack.config.{js,ts}',
           '**/webpack.config.*.{js,ts}',
           '**/vite.config.{js,ts}',
-        ]
-      }
-    ]
+        ],
+      },
+    ],
   },
 };
